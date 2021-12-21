@@ -2,7 +2,9 @@ package utils
 
 import (
 	"bytes"
+	"errors"
 	"os/exec"
+	"strings"
 )
 
 func ExecGit(subcommand string, arguments ...string) (string, string, error) {
@@ -18,4 +20,21 @@ func ExecGit(subcommand string, arguments ...string) (string, string, error) {
 	err := commands.Run()
 
 	return string(standardOutput.Bytes()), string(standardError.Bytes()), err
+}
+
+func CanCommit() error {
+	stdout, stderr, err := ExecGit("status")
+	if err != nil {
+		return errors.New(stderr)
+	}
+
+	if strings.Contains(stdout, "nothing to commit, working tree clean") {
+		return errors.New(stdout)
+	}
+
+	if strings.Contains(stdout, "no changes added to commit") {
+		return errors.New(stdout)
+	}
+
+	return nil
 }
