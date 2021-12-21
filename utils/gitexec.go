@@ -3,6 +3,7 @@ package utils
 import (
 	"bytes"
 	"errors"
+	"github.com/fatih/color"
 	"os/exec"
 	"strings"
 )
@@ -34,6 +35,21 @@ func CanCommit() error {
 
 	if strings.Contains(stdout, "no changes added to commit") {
 		return errors.New(stdout)
+	}
+
+	return nil
+}
+
+func HandleGitError(stdout string, stderr string, err error) error {
+	// Print the stdout and stderr in case of an error
+	if err != nil && stderr != "" {
+		color.Red(stderr)
+		return err
+	} else if err != nil && stdout != "" {
+		color.Red(stdout)
+		return err
+	} else if err != nil {
+		return err
 	}
 
 	return nil
