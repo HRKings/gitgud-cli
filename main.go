@@ -9,6 +9,8 @@ import (
 
 func main() {
 	app := &cli.App{
+		Name: "gitgud",
+		Usage: "A cross-platform command line interface for the GitGud modular Git model",
 		Commands: []*cli.Command{
 			&commit.Command,
 		},
