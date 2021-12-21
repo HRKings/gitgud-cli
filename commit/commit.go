@@ -122,14 +122,9 @@ func ExecCommand(context *cli.Context, full bool) error {
 	}
 
 	// Execute the commit is everything is all right
-	stdout, stderr, err := DoCommit(message, context.Bool("all"), context.Bool("amend"))
-
-	// Print the stdout and stderr in case of an error
-	if err != nil && stderr != "" {
-		color.Red(stderr)
-		return err
-	} else if err != nil && stdout != "" {
-		color.Red(stdout)
+	stdout, stderr, gitErr := DoCommit(message, context.Bool("all"), context.Bool("amend"))
+	err = utils.HandleGitError(stdout, stderr, gitErr)
+	if err != nil {
 		return err
 	}
 
