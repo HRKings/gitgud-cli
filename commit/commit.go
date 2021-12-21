@@ -63,6 +63,38 @@ var Command = cli.Command{
 				return ExecCommand(context, true)
 			},
 		},
+		{
+			Name:    "generate",
+			Aliases: []string{"gen"},
+			Flags: []cli.Flag{
+				&cli.StringFlag{
+					Name:    "body",
+					Aliases: []string{"b"},
+					Usage:   "The `<body>` of this commit.",
+				},
+				&cli.StringFlag{
+					Name:    "closes",
+					Aliases: []string{"c"},
+					Usage:   "`<#issue1, #issueN>` is a comma separated list of issues that this commit closes.",
+				},
+				&cli.StringFlag{
+					Name:    "see",
+					Aliases: []string{"r"},
+					Usage:   "`<#issue1, #issueN>` is a comma separated list of issues that this commit references.",
+				},
+			},
+			Action: func(context *cli.Context) error {
+				message, err := BuildFullCommitMessage(context.String("message"),
+					context.String("scope"), context.Bool("quick"), context.String("body"),
+					context.String("closes"), context.String("see"))
+				if err != nil {
+					return err
+				}
+
+				color.Blue(message)
+				return nil
+			},
+		},
 	},
 }
 
