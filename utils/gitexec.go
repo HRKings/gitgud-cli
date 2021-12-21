@@ -40,6 +40,15 @@ func CanCommit() error {
 	return nil
 }
 
+func HasRepository() error {
+	_, stderr, err := ExecGit("rev-parse", "--is-inside-work-tree")
+	if err != nil {
+		return errors.New(stderr)
+	}
+
+	return nil
+}
+
 func HandleGitError(stdout string, stderr string, err error) error {
 	// Print the stdout and stderr in case of an error
 	if err != nil && stderr != "" {
