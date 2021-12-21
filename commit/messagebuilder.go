@@ -28,9 +28,9 @@ func BuildCommitMessage(subject string, domain string, quick bool) (string, erro
 		return "", err
 	}
 
-	// Ask for the domain if isn't in the quick mode
+	// Ask for the scope if isn't in the quick mode
 	if domain == "" && !quick {
-		domain, err = EnterDomain()
+		domain, err = EnterScope()
 		if err != nil {
 			return "", err
 		}

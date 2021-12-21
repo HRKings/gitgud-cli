@@ -46,15 +46,15 @@ func EnterSeeAlso() (string, error) {
 	return also, err
 }
 
-func EnterDomain() (string, error) {
-	domainPrompt := &survey.Input{
-		Message: "What domain this commit affects?",
+func EnterScope() (string, error) {
+	scopePrompt := &survey.Input{
+		Message: "What scope this commit affects?",
 	}
 
-	var domain string
-	err := survey.AskOne(domainPrompt, &domain)
+	var scope string
+	err := survey.AskOne(scopePrompt, &scope)
 
-	return domain, err
+	return scope, err
 }
 
 func EnterTag() (string, error) {
