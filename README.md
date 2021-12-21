@@ -59,6 +59,15 @@ The following flags can be used after the subcommand:
 - `-c` or `--closes` : Specify a list of closed issues by the commit
 - `-s` or `--see` : Specify a list of referenced issues by the commit
 
+#### Generate
+
+This subcommand will simply generate a commit message, without actually committing anything
+
+```Bash
+gitgud commit generate
+gitgud c gen
+```
+
 ## Compiling
 
 You are welcome to clone and compile this repository. For this you will need Go on the latest version and compile it from the terminal using:
