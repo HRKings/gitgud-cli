@@ -71,7 +71,8 @@ func EnterTag() (string, error) {
 			"chore",
 			"misc"},
 		Default: "misc",
-		Help: `"feature  : A new feature and small additions
+		Help: `Tag descriptions =
+feature  : A new feature and small additions
 change   : Any changes on existing functionality
 fix      : A bugfix or hotfix
 style    : Any change in styling, layout, css, design, etc
@@ -101,7 +102,8 @@ func EnterFlags() ([]string, error) {
 			"rm",
 			"wip",
 		},
-		Help: `!!! : Breaking change - Significant changes in software architecture and/or logic, that affects existing code.
+		Help: `Flags descriptions =
+!!! : Breaking change - Significant changes in software architecture and/or logic, that affects existing code.
 db  : Changes that require database structure or data to be updated
 api : Changes that modify the API usage, models or structure
 ux  : Change in user experience - Anything that needs the user to relearn to use a feature
