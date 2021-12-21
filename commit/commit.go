@@ -30,9 +30,9 @@ var Command = cli.Command{
 			Usage:   "Don't ask for missing parts",
 		},
 		&cli.StringFlag{
-			Name:    "domain",
-			Aliases: []string{"d"},
-			Usage:   "`<domain>` is the area of the code that the commit affects.",
+			Name:    "scope",
+			Aliases: []string{"s"},
+			Usage:   "`<scope>` is the area of the code that the commit affects.",
 		},
 	},
 	Action: func(context *cli.Context) error {
@@ -55,7 +55,7 @@ var Command = cli.Command{
 				},
 				&cli.StringFlag{
 					Name:    "see",
-					Aliases: []string{"s"},
+					Aliases: []string{"r"},
 					Usage:   "`<#issue1, #issueN>` is a comma separated list of issues that this commit references.",
 				},
 			},
@@ -74,10 +74,10 @@ func ExecCommand(context *cli.Context, full bool) error {
 	// Build a full message or a simple one
 	if !full {
 		message, err = BuildCommitMessage(context.String("message"),
-			context.String("domain"), context.Bool("quick"))
+			context.String("scope"), context.Bool("quick"))
 	} else {
 		message, err = BuildFullCommitMessage(context.String("message"),
-			context.String("domain"), context.Bool("quick"), context.String("body"),
+			context.String("scope"), context.Bool("quick"), context.String("body"),
 			context.String("closes"), context.String("see"))
 	}
 	if err != nil {
