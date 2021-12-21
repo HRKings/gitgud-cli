@@ -99,9 +99,14 @@ var Command = cli.Command{
 }
 
 func ExecCommand(context *cli.Context, full bool) error {
+	// Verify if there is changes to commit
+	err := utils.CanCommit()
+	if err != nil {
+		return err
+	}
+
 	// Build the commit message
 	var message string
-	var err error
 
 	// Build a full message or a simple one
 	if !full {
