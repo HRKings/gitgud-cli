@@ -10,6 +10,10 @@ This repository is cross-platform CLI (Command Line Interface) for the [GitGud](
     - [Commit Module](#commit-module)
       - [Flags](#flags)
       - [Full commit](#full-commit)
+      - [Generate](#generate)
+    - [Flow Module](#flow-module)
+      - [Flow Init](#flow-init)
+      - [Flow Start](#flow-start)
   - [Compiling](#compiling)
   - [Contributing](#contributing)
 
@@ -66,6 +70,30 @@ This subcommand will simply generate a commit message, without actually committi
 ```Bash
 gitgud commit generate
 gitgud c gen
+```
+
+### Flow Module
+
+This module is equivalent to the [Flow submodel](https://github.com/HRKings/GitGud/blob/stable/Flow/GitGud_Flow.md)
+
+#### Flow Init
+
+The init command will initialize a new local Git repository and create the stable branch, if a repository is already found in the folder, it will instead only create the stable branch, additionally, if the `--remote` or `-r` flag is provided, it will automatically add the `origin` remote and push the local repository to it
+
+```Bash
+gitgud flow init --remote 'git@github:User/Repo.git'
+gitgud f init -r 'git@github:User/Repo.git'
+```
+
+Also, the `--defaultBranch` or `-d` flag can be provided to change the default name
+
+#### Flow Start
+
+The start command will create a new branch with the prefixed type, which can be selected from a list. The branch name can be provided via the `--branchName` or `-b` flag, otherwise it will be asked during the process
+
+```Bash
+gitgud flow init --branchName 'my-feature-branch'
+gitgud f init -v 'my-feature-branch'
 ```
 
 ## Compiling
