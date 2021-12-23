@@ -53,8 +53,8 @@ The following flags can be used:
 The full commit subcommand is a variation of the base command that will generate a complete commit message (with body and footer)
 
 ```Bash
-gitgud commit -m "Commit subject" full
-gitgud commit -m "Commit subject" f
+gitgud commit full -m "Commit subject"
+gitgud commit f -m "Commit subject"
 ```
 
 The following flags can be used after the subcommand:
@@ -72,6 +72,8 @@ gitgud commit generate
 gitgud c gen
 ```
 
+All flags from the full commit command can be used
+
 ### Flow Module
 
 This module is equivalent to the [Flow submodel](https://github.com/HRKings/GitGud/blob/stable/Flow/GitGud_Flow.md)
@@ -85,15 +87,15 @@ gitgud flow init --remote 'git@github:User/Repo.git'
 gitgud f init -r 'git@github:User/Repo.git'
 ```
 
-Also, the `--defaultBranch` or `-d` flag can be provided to change the default name
+Also, the `--defaultBranch` flag can be provided to change the default name
 
 #### Flow Start
 
 The start command will create a new branch with the prefixed type, which can be selected from a list. The branch name can be provided via the `--branchName` or `-b` flag, otherwise it will be asked during the process
 
 ```Bash
-gitgud flow init --branchName 'my-feature-branch'
-gitgud f init -v 'my-feature-branch'
+gitgud flow start --branchName 'my-feature-branch'
+gitgud f start -b 'my-feature-branch'
 ```
 
 ## Compiling
