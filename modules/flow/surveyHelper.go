@@ -1,4 +1,4 @@
-package flow
+package flow_module
 
 import "github.com/AlecAivazis/survey/v2"
 
