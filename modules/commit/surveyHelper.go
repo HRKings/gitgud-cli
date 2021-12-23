@@ -1,4 +1,4 @@
-package commit
+package commit_module
 
 import "github.com/AlecAivazis/survey/v2"
 
