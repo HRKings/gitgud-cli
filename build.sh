@@ -1,5 +1,5 @@
 #! /bin/bash
-VERSION=$(git describe --long --tags | cut -d '-' -f 1)
+VERSION=$(git describe --long --tags stable | cut -d '-' -f 1)
 
 echo "Removing old versions..."
 rm -rf ./build
