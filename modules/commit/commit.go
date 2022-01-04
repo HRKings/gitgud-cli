@@ -6,10 +6,14 @@ import (
 )
 
 func ExecCommand(all bool, amend bool, message string, scope string, quick bool, body string, closes string, see string, full bool) error {
+	var err error
+
 	// Verify if there is changes to commit
-	err := utils.CanCommit()
-	if err != nil {
-		return err
+	if !amend {
+		err = utils.CanCommit()
+		if err != nil {
+			return err
+		}
 	}
 
 	// Build a full message or a simple one
